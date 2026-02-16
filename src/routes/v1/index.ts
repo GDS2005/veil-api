@@ -1,9 +1,8 @@
 import { Router } from "express";
+import { register } from "../../controller/user.controller.js";
 
 const router = Router();
 
-router.get("/test", (req, res) => {
-  res.json({ message: "API v1 OK" });
-});
+router.get("/test", register);
 
 export default router;
