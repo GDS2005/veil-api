@@ -4,8 +4,11 @@ import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import v1Router from "./routes/v1/index.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
+
+app.use(express.json());
 
 app.use(morgan("dev"));
 app.use(helmet());
@@ -16,3 +19,5 @@ const PORT = process.env.API_PORT || 3000
 app.listen(PORT, () => {
   console.log(`APP listening on port ${PORT}`);
 });
+
+app.use(errorHandler)
